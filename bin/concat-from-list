@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var args = process.argv.slice(2);
+if (args.length === 0) {
+	console.log('You need to pass at least the path to JSON file.');
+	return;
+}
+
+var Concat = require('../');
+var jsonPath = args[0];
+var destination = null;
+if (typeof args[1] !== 'undefined') {
+	destination = args[1];
+}
+
+var concat = new Concat(jsonPath, destination);
+if (concat.run()) {
+	console.log('Successfully created file at: ' + concat.destination);
+} else {
+	console.log('An error occurred.');
+}
