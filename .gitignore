@@ -2,3 +2,4 @@
 npm-debug.log
 
 test/fixtures/concat.js
+test/fixtures/test_build
