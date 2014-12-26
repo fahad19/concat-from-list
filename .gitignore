@@ -1,5 +1,5 @@
 /node_modules/
 npm-debug.log
 
-test/fixtures/concat.js
+test/fixtures/concat-concat.json
 test/fixtures/test_build

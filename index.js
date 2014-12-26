@@ -2,17 +2,17 @@
 
 var fs = require('fs');
 
-module.exports = function (jsonPath) {
-	this.jsonPath = jsonPath;
+module.exports = function (listPath) {
+	this.listPath = listPath;
 
-	var paths = jsonPath.split('/');
-	var jsonFileName = paths.pop();
+	var paths = listPath.split('/');
+	var listFileName = paths.pop();
 	var destination = paths.join('/') + '/';
 	if (typeof arguments[1] !== 'undefined' && arguments[1]) {
 		destination = arguments[1];
 	}
 	if (destination.slice(-1) === '/') {
-		destination += jsonFileName.replace('.json', '.js');
+		destination += 'concat-' + listFileName;
 	}
 	this.destination = destination;
 
@@ -29,12 +29,21 @@ module.exports = function (jsonPath) {
 		}
 	}
 
-	this.readJson = function () {
-		return JSON.parse(fs.readFileSync(this.jsonPath, 'utf8'));
+	this.readList = function () {
+		var list = [];
+
+		if (this.listPath.slice(-5) === '.json') {
+			list = JSON.parse(fs.readFileSync(this.listPath, 'utf8'));
+		} else if (this.listPath.slice(-5) === '.cson') {
+			var cson = require('cson');
+			list = cson.parseFileSync(this.listPath);
+		}
+
+		return list;
 	};
 
 	this.readFile = function (file) {
-		var paths = this.jsonPath.split('/');
+		var paths = this.listPath.split('/');
 		paths.pop();
 		var jsonDir = paths.join('/') + '/';
 		if (file[0] !== '.') {
@@ -49,7 +58,7 @@ module.exports = function (jsonPath) {
 	};
 
 	this.run = function () {
-		var files = this.readJson();
+		var files = this.readList();
 
 		var output = '';
 		var self = this;

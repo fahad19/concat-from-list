@@ -1,6 +1,6 @@
 #  [![Build Status](https://secure.travis-ci.org/fahad19/concat-from-list.png?branch=master)](http://travis-ci.org/fahad19/concat-from-list)
 
-> Concatenate files listed in JSON file.
+> Concatenate files listed in JSON/CSON file.
 
 
 ## Install
@@ -22,7 +22,7 @@ You can first store a list of all files you want to be concatenated in `app.json
 ]
 ```
 
-Paths are relative to the directive the JSON file is stored in.
+Paths are relative to the directory the JSON file is stored in.
 
 Now you can run this command to concatenate all the files listed in your JSON file:
 
