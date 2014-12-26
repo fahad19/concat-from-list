@@ -26,17 +26,15 @@ Paths are relative to the directory the JSON file is stored in.
 
 Now you can run this command to concatenate all the files listed in your JSON file:
 
-```sh
-$ concat-from-list app.json // produces app.js
-
-$ concat-from-list app.json my_concatenated_file.js // produces my_concatenated_file.js
+```
+$ concat-from-list app.json dist/app.js
 ```
 
 If you wish not to install the module globally, you can do this:
 
-```sh
+```
 $ npm install --save-dev concat-from-list
-$ ./node_modules/.bin/concat-from-list path/to/app.json
+$ ./node_modules/.bin/concat-from-list path/to/app.json dist/app.js
 ```
 
 ## License

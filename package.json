@@ -1,6 +1,6 @@
 {
   "name": "concat-from-list",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Concatenate files listed in JSON/CSON file.",
   "homepage": "https://github.com/fahad19/concat-from-list",
   "author": {
